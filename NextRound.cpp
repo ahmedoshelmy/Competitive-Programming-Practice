@@ -1,3 +1,5 @@
+//Output the number of participants who advance to the next round.
+
 #include <iostream>
 
 using namespace std;

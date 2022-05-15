@@ -58,3 +58,19 @@ bool isPerfectSquare(ld x) { ld sr = sqrt(x); re((sr - floor(sr)) == 0); }
 
 ((PowMod(3, 3 * n, MOD) - PowMod(7, n, MOD)) % MOD + MOD) % MOD
 
+
+//Combinatorics 
+
+ll C(ll n, ll r) {
+	if (r > n - r) r = n - r;
+	ll ans = 1;
+	ll i;
+ 
+	for (i = 1; i <= r; i++) {
+		ans = min((ll)100000000, ans *(n - r + i));
+		ans /= i;
+	}
+ 
+	return ans;
+}
+

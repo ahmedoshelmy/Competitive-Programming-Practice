@@ -101,3 +101,13 @@ ll C(ll n, ll r) {
 	return ans;
 }
 
+//Binary Search 
+	//Lower bound example "Getting the index if the first value that satisfies the conditoin" 
+	
+ while(l<r){
+        mid = l + (r-l)/2 ;
+        if(sum(mid)-(n-mid)>=k){
+            r = mid;
+        }else l = mid  +1 ;
+    }
+    if(l < n && sum(l)<k+1) l++;

@@ -111,3 +111,13 @@ ll C(ll n, ll r) {
         }else l = mid  +1 ;
     }
     if(l < n && sum(l)<k+1) l++;
+
+
+// Sorting 
+
+auto myComp = [&](pair<int,string> e1, pair<int,string> e2) {
+        if(e1.first!=e2.first)
+            return e1.first<e2.first;
+        else
+            return e1.second<e2.second;
+    };

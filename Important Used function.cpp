@@ -121,3 +121,4 @@ auto myComp = [&](pair<int,string> e1, pair<int,string> e2) {
         else
             return e1.second<e2.second;
     };
+auto myComp = [&](const vector<int> & a, const vector<int> & b){ return a.size() < b.size(); };

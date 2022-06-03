@@ -122,3 +122,17 @@ auto myComp = [&](pair<int,string> e1, pair<int,string> e2) {
             return e1.second<e2.second;
     };
 auto myComp = [&](const vector<int> & a, const vector<int> & b){ return a.size() < b.size(); };
+
+
+//Converting 
+
+ string toBinary(int n)
+        {
+            string r;
+            while (n != 0){
+                r += ( n % 2 == 0 ? "0" : "1" );
+                n /= 2;
+            }
+            reverse(all(r));
+            return r;
+        }

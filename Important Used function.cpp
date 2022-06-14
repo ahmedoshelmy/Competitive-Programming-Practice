@@ -85,6 +85,7 @@ bool isPerfectSquare(ld x) { ld sr = sqrt(x); re((sr - floor(sr)) == 0); }
 
 ((PowMod(3, 3 * n, MOD) - PowMod(7, n, MOD)) % MOD + MOD) % MOD
 
+    vector<char> chars ={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
 //Combinatorics 
 

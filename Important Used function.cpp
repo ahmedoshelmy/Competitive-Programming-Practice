@@ -137,3 +137,15 @@ auto myComp = [&](const vector<int> & a, const vector<int> & b){ return a.size()
             reverse(all(r));
             return r;
         }
+
+
+
+//Number Theory 
+
+bool isPrime(ll x){
+    if(x<2||x%2==0) re false;
+    for (int i = 3; i*i <=x ; i+=2) {
+        if(x%i==0) re false;
+    }
+    re true;
+}

@@ -149,3 +149,7 @@ bool isPrime(ll x){
     }
     re true;
 }
+
+//Precision 
+
+    printf("%.15lf\n",ans);

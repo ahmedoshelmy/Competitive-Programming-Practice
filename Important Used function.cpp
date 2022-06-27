@@ -95,10 +95,9 @@ ll C(ll n, ll r) {
 	ll i;
  
 	for (i = 1; i <= r; i++) {
-		ans = min((ll)100000000, ans *(n - r + i));
+		ans *= n - r + i;
 		ans /= i;
 	}
- 
 	return ans;
 }
 

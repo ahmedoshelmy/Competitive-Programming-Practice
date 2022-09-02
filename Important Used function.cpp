@@ -123,7 +123,17 @@ auto myComp = [&](pair<int,string> e1, pair<int,string> e2) {
     };
 auto myComp = [&](const vector<int> & a, const vector<int> & b){ return a.size() < b.size(); };
 
-
+// Lambda Expressions 
+   function<void(int, int)> flood_fill = [&](int i, int j) {
+        if (vis[i][j]) return;
+        vis[i][j] = true;
+        comp.emplace_back(i, j);
+        for (int k = 0; k < (int)dx.size(); k++) {
+            int x = i + dx[k], y = j + dy[k];
+            if (x < 0 || x >= n || y < 0 || y >= m) continue;
+            if (grid[x][y] == '*') flood_fill(x, y);
+        }
+    };
 //Converting 
 
  string toBinary(int n)

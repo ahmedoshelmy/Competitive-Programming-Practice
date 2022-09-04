@@ -139,6 +139,9 @@ ll fact(ll n)
         res = (res * i)%MOD;
     return res;
 }
+ll nPr(ll n, ll r){
+    return (fact[n]%MOD*pow(fact[n-r], MOD-2, MOD)%MOD)%MOD;
+}
 //Binary Search 
 	//Lower bound example "Getting the index if the first value that satisfies the conditoin" 
 	

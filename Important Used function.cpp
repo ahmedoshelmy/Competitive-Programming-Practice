@@ -101,7 +101,44 @@ ll C(ll n, ll r) {
 	}
 	return ans;
 }
-
+ll power(ll x, ll y, ll p)
+{
+    ll res = 1;
+    x = x % p;
+    while (y){
+        if (y & 1)
+            res = (res * x) % p;
+        y >>= 1;
+        x = (x * x) % p;
+    }
+    return res;
+}
+ 
+ll modInverse(ll n, ll p)
+{
+    return power(n, p - 2, p);
+}
+ 
+ll nCr(ll n, ll r, ll p)
+{
+    if (n < r)
+        return 0;
+    if (r == 0)
+        return 1;
+    ll fac[n + 1];
+    fac[0] = 1;
+    for (int i = 1; i <= n; i++)
+        fac[i] = (fac[i - 1] * i) % p;
+    return ((fac[n] * modInverse(fac[r], p) % p) * (modInverse(fac[n - r], p) % p))% p;
+}
+ 
+ll fact(ll n)
+{
+    ll res = 1LL;
+    for (ll i = 2LL; i <= n; i++)
+        res = (res * i)%MOD;
+    return res;
+}
 //Binary Search 
 	//Lower bound example "Getting the index if the first value that satisfies the conditoin" 
 	

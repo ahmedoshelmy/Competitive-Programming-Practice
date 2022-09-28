@@ -1,3 +1,5 @@
+// Solution 1
+
 class Solution {
 public:
     int maxSubArray(vector<int>& a) {
@@ -14,5 +16,23 @@ public:
         }
         if(!positive) return *max_element(b.begin(),b.end());
         return max(ans,a[0]);
+    }
+};
+
+// Solution 2 
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& a) {
+        int n = (int)a.size();
+        int sum = 0 , ans =  INT32_MIN; bool positive = false;
+        for(int i =0;i<n;i++){
+            positive |= a[i] >=0 ;
+            if(sum<0&&a[i]>=0) sum = a[i];
+            else sum+=a[i];
+            ans = max(sum,ans);
+        }
+        if(!positive) return *max_element(a.begin(),a.end());
+        return ans;
     }
 };

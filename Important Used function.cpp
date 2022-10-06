@@ -22,6 +22,7 @@ typedef vector<string>    vs;
 
 
 
+    freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
 
 
 

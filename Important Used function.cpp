@@ -77,6 +77,21 @@ ll ExtGCD(ll a, ll b, ll& x, ll& y) { if (!b) { x = 1; y = 0; re a; } ll r = Ext
 ll mult(ll a, ll b) { re(1LL * a * b) % MOD; }
 
 
+ 
+ll add( ll x , ll y , ll M = 1e9 + 7 ){
+    return ( x%M + y%M )%M ;
+}
+ 
+ll sub( ll x , ll y , ll M = 1e9 + 7 ){
+    return ( x%M - y%M + 2*M )%M ;
+}
+ 
+ll mul( ll x , ll y , ll M = 1e9 + 7 ){
+    return ( x%M * y%M )%M ;
+}
+ 
+
+
 bool cmp(double a, double b) { re abs(a - b)<EPS; }
 bool isint(double a) { re cmp(a, round(a)); }
 bool isPrime(ll n) { if (n == 2)re 1; if (n<2 || n % 2 == 0)re 0; for (ll i = 3; i*i <= n; i += 2)if (n%i == 0)re 0; re 1; }

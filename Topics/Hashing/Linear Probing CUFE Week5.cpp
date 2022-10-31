@@ -33,10 +33,6 @@ vector<string> readFile() {
         ostringstream ss;
         ss << f.rdbuf(); // reading data
         file = ss.str();
-
-        // Removes punctuation and converts to lower case
-        preprocess(file);
-
         // Split into tokens on space
         istringstream iss(file);
 		string x; vector<string> tokens; 
@@ -66,19 +62,22 @@ int main(){
 	cout<<strings.size()<<endl;
 
 	vector<string> hash_table (M , ""); // "/" means deleted 
-	vector<long long> times; 
+	vector<double> times; 
 	long long count  = 0 ; 
 	for (int i = 0; i < N; i++)
 	{
 		if(i%500 ==0){
-			times.push_back(count/500) ;
+			times.push_back(count/500.0) ;
 			count = 0 ; 
 		}
 		high_resolution_clock::time_point start = high_resolution_clock::now();
 		int hash_function = hashf(strings[i]) % M ; 
 		if(hash_table[hash_function] != "" || hash_table[hash_function] != "/" ){
 			int j = 0 ; int nj = (hash_function+j)%M ; 
-			while(j<M && hash_table[nj]!= "" && hash_table[nj]!="/")j++; 
+			while(j<M && hash_table[nj]!= "" && hash_table[nj]!="/"){
+				j++;
+				nj = (hash_function+j)%M ; 
+			}
 			hash_table[nj] = strings[i] ;  
 		}else hash_table[hash_function] = strings[i] ; 
 		high_resolution_clock::time_point stop = high_resolution_clock::now();
@@ -87,7 +86,7 @@ int main(){
 	}
 	int mn = INT32_MAX ; 
 	int mx = INT32_MIN ; 
-	int sum = 0 ; 
+	long long  sum = 0 ; 
 
 
 	for (int i = 14000; i < 15000; i++)
@@ -95,15 +94,18 @@ int main(){
 		int hash_function = hashf(strings[i]) % M ; 
 		if(hash_table[hash_function] != strings[i] ){
 			int j = 0 ; int nj = (hash_function+j)%M ; 
-			while(j<M && hash_table[nj]!= "" && hash_table[nj]!=strings[i])j++; 
-			hash_table[nj] = "" ; 
+			while(j<M && hash_table[nj]!= "" && hash_table[nj]!=strings[i]){
+				j++;
+				nj = (hash_function+j)%M ; 
+			}
+			hash_table[nj] = "/" ; 
 			sum += j ; mx = max(mx , j ) ; mn = min (mn , j ) ;
 		}else hash_table[hash_function] = strings[i] ; 
 
 	}
 	cout<<"MIN "<<mn<<endl; 
 	cout<<"MAx "<<mx<<endl; 
-	cout<<"Avg "<<sum/1000<<endl; 
+	cout<<"Avg "<<sum/1000.0<<endl; 
 	for(auto u : times ) cout<<u<<endl; 
 	 system("pause");
 }

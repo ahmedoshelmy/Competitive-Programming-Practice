@@ -33,3 +33,25 @@ public:
         return  0; 
     }
 };
+
+// Another BFS Solution 
+
+class Solution {
+public:
+    int maxLevelSum(TreeNode* root) {
+        queue<TreeNode*> q; q.push(root); int ans = 1; 
+        int s = 0 ; int mx_sum = INT32_MIN; int level = 1; 
+        while(!q.empty()){
+            int sz = q.size();
+            for(int i = 0 ; i<sz;i++){
+                TreeNode* x = q.front();s+=x->val; 
+                if(x->right)q.push(x->right);
+                if(x->left)q.push(x->left);
+                 q.pop();
+            }
+            if(s>mx_sum) ans = level,mx_sum = s; 
+              s = 0,level++ ;
+        }
+        return ans;
+    }
+};

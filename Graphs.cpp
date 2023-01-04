@@ -50,6 +50,10 @@
 
 
 int n , m ;
+void init(){
+    parent = union_rank = vi(n);
+    for (int i = 0; i < n; ++i) make_set(i);
+}
    vi parent , union_rank ;
     int find_set(int v) {
         int root = v;

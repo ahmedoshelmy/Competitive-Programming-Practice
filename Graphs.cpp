@@ -82,6 +82,33 @@ void init(){
                 union_rank[a]++;
         }
     }
+// Kruskal 
+
+  union_rank = vis = parent = vi(n); adj = vvi(n);
+init() ;
+vector<pair<ll,pair<int,int>>> q ;
+     for (int i = 0; i < m; ++i) {
+        cin>>x>>y>>c;x--,y--;
+        q.push_back({c,{x,y}});
+    }
+     sort(all(q));
+     ll cost = 0 ;int police_stations = 0 ;
+    for (auto & u:q){
+        ll edge = u.first ;
+        int from =u.second.first;
+        int to =u.second.second;
+        from = find_set(from) , to = find_set(to) ;
+        if( from != to){
+            if(edge < a) {
+                cost += edge;
+                union_sets(from, to);
+            }
+        }
+    }
+    for (int i = 0; i < n; ++i) {
+        if(parent[i] == i) police_stations++,cost+=a;
+    }
+
 
 
 
